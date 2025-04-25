@@ -151,20 +151,23 @@
       const formData = new FormData(formulario);
 
       try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbx1kGe6VdGCO1WcSc7oDYXUKvjPOXPVNrwbJPWe9Ry14QKa30tXCclJz0jGOtisGmLshQ/exec", {
+        const res = await fetch("https://script.google.com/macros/s/AKfycbxbbmN5x0chIJvbvkDgWzaS9ALpMuGkSK0YcdAjfudKxpQKOkvE7nkrs9iE8mXER4LiXQ/exec", {
           method: "POST",
           body: formData
         });
 
-        if (await res.text() === "success") {
+        const text = await res.text();
+        if (text === "success") {
           mensaje.innerHTML = "👍 Gracias, tu cita ha sido agendada.<br>⏳ Redirigiendo al inicio...<br>🎉 Te contactaremos pronto.";
           mensaje.style.display = "block";
           formulario.reset();
           window.scrollTo({ top: 0, behavior: 'smooth' });
           setTimeout(() => mensaje.style.display = "none", 5000);
+        } else {
+          throw new Error("Respuesta inesperada: " + text);
         }
       } catch (error) {
-        alert("Ocurrió un error. Intenta más tarde.");
+        alert("Ocurrió un error. Intenta más tarde.\n" + error.message);
       }
     });
   </script>
