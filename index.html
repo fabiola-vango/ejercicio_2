@@ -1,192 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Clínica Gineco-Pediátrica</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fff5f8;
-      margin: 0;
-      padding: 0;
-      color: #444;
-    }
-    header {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-      background: #fcd9e5;
-    }
-    h1 {
-      color: #a64d79;
-    }
-    .portada {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .section {
-      padding: 2rem;
-    }
-    .card {
-      background: white;
-      padding: 1.5rem;
-      margin-bottom: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .accordion {
-      margin-top: 1rem;
-    }
-    .accordion button {
-      width: 100%;
-      text-align: left;
-      background: #f9e6ef;
-      color: #a64d79;
-      border: none;
-      padding: 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-    }
-    .accordion-content {
-      display: none;
-      padding: 0.5rem 1rem;
-      background: #fff;
-      border-left: 4px solid #a64d79;
-      border-radius: 0 0 10px 10px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    input, select, textarea {
-      margin-bottom: 1rem;
-      padding: 0.7rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-    button[type="submit"] {
-      background: #a64d79;
-      color: white;
-      padding: 0.8rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .mensaje-exito {
-      margin-top: 1rem;
-      color: green;
-      font-weight: bold;
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Gineco-Pediátrica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #e9c1e1;
+            text-align: center;
+            padding: 20px 0;
+        }
+        header img {
+            max-width: 100%;
+            height: auto;
+        }
+        .card {
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #e9c1e1;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d8a7b5;
+        }
+        #mensaje-exito {
+            display: none;
+            color: green;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  <header>
+
+<header>
     <h1>Clínica Gineco-Pediátrica</h1>
-    <img class="portada" src="https://github.com/Per-Arredondo/ejercicio_clinica.v2/blob/main/portada.png?raw=true" alt="Portada clínica">
-  </header>
+    <img src="https://github.com/Per-Arredondo/ejercicio_clinica.v2/blob/main/portada.png?raw=true" alt="Portada Clínica">
+</header>
 
-  <div class="section">
-    <div class="card">
-      <h2>¿Quiénes somos?</h2>
-      <p>Clínica enfocada en salud ginecológica, obstétrica y pediátrica. Brindamos atención con calidez, ética profesional y trato humano, especialmente a mujeres, infancias y familias.</p>
+<div class="card">
+    <h2>Agenda tu cita</h2>
+    <form id="formulario-cita">
+        <div class="form-container">
+            <input type="text" name="Nombre completo" placeholder="Nombre completo" required>
+            <input type="tel" name="Teléfono" placeholder="Teléfono" required>
+            <input type="email" name="Correo electrónico" placeholder="Correo electrónico" required>
+            <select name="Sexo" required>
+                <option value="Femenino">Femenino</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Otro">Otro</option>
+            </select>
+            <select name="Especialidad" required>
+                <option value="Ginecología">Ginecología</option>
+                <option value="Obstetricia">Obstetricia</option>
+                <option value="Pediatría">Pediatría</option>
+                <option value="Medicina General">Medicina General</option>
+            </select>
+            <input type="date" name="Fecha" required>
+            <input type="time" name="Hora" required>
+            <textarea name="Comentarios adicionales" placeholder="Comentarios adicionales (opcional)" rows="4"></textarea>
+            <button type="submit">Enviar cita</button>
+        </div>
+    </form>
+
+    <div id="mensaje-exito">
+        👍 Gracias, tu cita ha sido agendada. ⏳ Redirigiendo al inicio... 🎉 Te contactaremos pronto.
     </div>
-    <div class="card">
-      <h2>Misión</h2>
-      <p>Brindar atención médica especializada, accesible y con enfoque integral a mujeres, gestantes e infancias.</p>
-    </div>
-    <div class="card">
-      <h2>Visión</h2>
-      <p>Ser un referente en salud femenina e infantil, por nuestra excelencia médica, cercanía y compromiso con la comunidad.</p>
-    </div>
-    <div class="card">
-      <h2>Valores</h2>
-      <ul>
-        <li>Ética profesional</li>
-        <li>Empatía</li>
-        <li>Diversidad</li>
-        <li>Honestidad</li>
-        <li>Responsabilidad</li>
-        <li>Enfoque de género y niñez</li>
-      </ul>
-    </div>
+</div>
 
-    <div class="card accordion">
-      <h2>Especialidades Médicas</h2>
-      <button onclick="toggleAccordion(this)">󰟻 Ginecología</button>
-      <div class="accordion-content">Salud reproductiva, planificación familiar, anticoncepción, estudios Papanicolaou, chequeos ginecológicos.</div>
-
-      <button onclick="toggleAccordion(this)">🧐 Obstetricia</button>
-      <div class="accordion-content">Control prenatal, ultrasonidos, educación perinatal, atención en embarazo de bajo y alto riesgo.</div>
-
-      <button onclick="toggleAccordion(this)">👶 Pediatría</button>
-      <div class="accordion-content">Control del desarrollo infantil, vacunas, revisiones, prevención de enfermedades y orientación para madres/padres.</div>
-
-      <button onclick="toggleAccordion(this)">🩺 Medicina General</button>
-      <div class="accordion-content">Valoración inicial, seguimiento a condiciones generales de salud, chequeos básicos y canalización a especialidades.</div>
-    </div>
-
-    <div class="card">
-      <h2>Agenda tu cita</h2>
-      <form id="formulario-cita">
-        <input name="Nombre completo" placeholder="Nombre completo" required />
-        <input name="Teléfono" placeholder="Teléfono" required />
-        <input name="Correo electrónico" placeholder="Correo electrónico" type="email" required />
-        <select name="Sexo" required>
-          <option value="">Selecciona sexo</option>
-          <option value="Femenino">Femenino</option>
-          <option value="Masculino">Masculino</option>
-          <option value="Otro">Otro</option>
-        </select>
-        <select name="Especialidad" required>
-          <option value="">Selecciona especialidad</option>
-          <option value="Ginecología">Ginecología</option>
-          <option value="Obstetricia">Obstetricia</option>
-          <option value="Pediatría">Pediatría</option>
-          <option value="Medicina General">Medicina General</option>
-        </select>
-        <input name="Fecha" type="date" required />
-        <input name="Hora" type="time" required />
-        <textarea name="Comentarios adicionales" placeholder="Comentarios adicionales..."></textarea>
-        <button type="submit">Agendar cita</button>
-        <div class="mensaje-exito" id="mensaje-exito">👍 Gracias, tu cita ha sido agendada. ⏳ Redirigiendo al inicio... 🎉</div>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    function toggleAccordion(btn) {
-      const content = btn.nextElementSibling;
-      content.style.display = content.style.display === "block" ? "none" : "block";
-    }
-
+<script>
+    // Script para enviar el formulario a Google Sheets a través de Google Apps Script
     document.getElementById("formulario-cita").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const form = e.target;
-      const data = new FormData(form);
-      fetch("https://script.google.com/macros/s/AKfycbwFi_aDVgKo7X5Z_XuYdxGEWOqnvmUcmUK8X09M2dAMI4E43_qEOB5K740q7OX7Gf-t/exec", {
-        method: "POST",
-        body: data,
-      })
-      .then(res => res.text())
-      .then(text => {
-        if (text === "success") {
-          const msg = document.getElementById("mensaje-exito");
-          msg.style.display = "block";
-          form.reset();
-          window.scrollTo({ top: 0, behavior: "smooth" });
-          setTimeout(() => msg.style.display = "none", 5000);
-        } else {
-          alert("Algo falló al enviar. Intenta de nuevo.");
-        }
-      })
-      .catch(() => alert("⚠️ Error de red. Intenta más tarde."));
+        e.preventDefault();  // Previene el comportamiento por defecto (enviar el formulario)
+        const form = e.target;
+        const data = new FormData(form);  // Crea un objeto FormData a partir del formulario
+
+        // Realiza la solicitud POST
+        fetch("https://script.google.com/macros/s/AKfycbxPTsniQN2oUpnb_ylGZ2V4j7hDEXYHAycv18S7tFejiX5hLyh_G85JyOjuxdJbRP8wLQ/exec", {
+            method: "POST",
+            body: data,  // Envía los datos del formulario
+        })
+        .then(res => res.text())  // Procesa la respuesta como texto
+        .then(text => {
+            if (text === "success") {
+                const msg = document.getElementById("mensaje-exito");
+                msg.style.display = "block";  // Muestra el mensaje de éxito
+                form.reset();  // Limpia el formulario
+                window.scrollTo({ top: 0, behavior: "smooth" });  // Hace scroll hacia arriba
+                setTimeout(() => msg.style.display = "none", 5000);  // Oculta el mensaje de éxito después de 5 segundos
+            } else {
+                alert("Algo falló al enviar. Intenta de nuevo.");
+            }
+        })
+        .catch(() => alert("⚠️ Error de red. Intenta más tarde."));  // Muestra un mensaje si hay error de red
     });
-  </script>
+</script>
+
 </body>
 </html>
