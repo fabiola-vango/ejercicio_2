@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendar Cita - Clínica Ginecológica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+    h1 {
+      text-align: center;
+      color: #9b59b6;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #9b59b6;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #8e44ad;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="https://github.com/Per-Arredondo/ejercicio_clinica.v2/blob/main/portada.png?raw=true" alt="Clínica Ginecológica">
+
+    <h1>Agendar Cita</h1>
+
+    <form id="formulario">
+      <input type="text" name="nombreCompleto" placeholder="Nombre completo" required>
+      <input type="tel" name="telefono" placeholder="Teléfono" required>
+      <input type="email" name="correoElectronico" placeholder="Correo electrónico" required>
+      
+      <select name="sexo" required>
+        <option value="">Sexo</option>
+        <option value="Femenino">Femenino</option>
+        <option value="Masculino">Masculino</option>
+      </select>
+      
+      <input type="text" name="especialidad" value="Ginecología" readonly>
+
+      <input type="date" name="fecha" required>
+      <input type="time" name="hora" required>
+      
+      <textarea name="comentarios" placeholder="Comentarios adicionales"></textarea>
+
+      <button type="submit">Agendar cita</button>
+    </form>
+  </div>
+
+  <script>
+    const formulario = document.getElementById('formulario');
+    
+    formulario.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(formulario);
+      const data = {
+        nombreCompleto: formData.get('nombreCompleto'),
+        telefono: formData.get('telefono'),
+        correoElectronico: formData.get('correoElectronico'),
+        sexo: formData.get('sexo'),
+        especialidad: formData.get('especialidad'),
+        fecha: formData.get('fecha'),
+        hora: formData.get('hora'),
+        comentarios: formData.get('comentarios')
+      };
+
+      try {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbxVVNmHx-oydXnOGayYP5SKOU9v5tKy-RREs8dnwoAnXmiuRUxbrYv8azMQv6klBhUimw/exec', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        const result = await response.json();
+        if (result.status === 'success') {
+          alert('¡Cita agendada exitosamente! Recibirás una confirmación en tu correo.');
+          formulario.reset();
+        } else {
+          alert('Error al agendar cita. Intente nuevamente.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error de conexión. Intente más tarde.');
+      }
+    });
+  </script>
+
+</body>
+</html>
